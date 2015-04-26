@@ -14,6 +14,9 @@ public class AssetLoader {
     public static Animation birdAnimation;
     public static TextureRegion bird, birdDown, birdUp;
 
+    public static TextureRegion skullUp, skullDown, bar;
+
+
 
     public static void load() {
 
@@ -35,10 +38,17 @@ public class AssetLoader {
         birdUp = new TextureRegion(texture, 170, 0, 17, 12);
         birdUp.flip(false, true);
 
-        TextureRegion[] birds = { birdDown, bird, birdUp };
+        TextureRegion[] birds = {birdDown, bird, birdUp};
         birdAnimation = new Animation(0.06f, birds);
-        birdAnimation.setPlayMode(Animation.PlayMode.LOOP_PINGPONG);
 
+
+        skullUp = new TextureRegion(texture, 192, 0, 24, 14);
+        // Create by flipping existing skullUp
+        skullDown = new TextureRegion(skullUp);
+        skullDown.flip(false, true);
+
+        bar = new TextureRegion(texture, 136, 16, 22, 3);
+        bar.flip(false, true);
 
 
 
@@ -48,6 +58,7 @@ public class AssetLoader {
     public static void dispose() {
         // We must dispose of the texture when we are finished.
         texture.dispose();
-    }
 
+
+    }
 }
