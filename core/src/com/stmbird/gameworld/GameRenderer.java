@@ -1,7 +1,6 @@
 package com.stmbird.gameworld;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Animation;
@@ -171,6 +170,37 @@ public class GameRenderer {
                     bird.getY(), bird.getWidth() / 2.0f,
                     bird.getHeight() / 2.0f, bird.getWidth(), bird.getHeight(),
                     1, 1, bird.getRotation());
+        }
+
+        if (myWorld.isReady()) {
+            // Draw shadow first
+            AssetLoader.shadow.draw(batcher, "Start", (136 / 2)
+                    - (42), 76);
+            // Draw text
+            AssetLoader.font.draw(batcher, "Start", (136 / 2)
+                    - (42 - 1), 75);
+        } else {
+
+            if (myWorld.isGameOver()) {
+                AssetLoader.shadow.draw(batcher, "Koniec gry", 25, 56);
+                AssetLoader.font.draw(batcher, "Koniec gry", 24, 55);
+
+                AssetLoader.shadow.draw(batcher, "Od nowa?", 23, 76);
+                AssetLoader.font.draw(batcher, "Od nowa?", 24, 75);
+
+
+            }
+
+
+            // Convert integer into String
+            String score = myWorld.getScore() + "";
+
+            // Draw shadow first
+            AssetLoader.shadow.draw(batcher, "" + myWorld.getScore(), (136 / 2)
+                    - (3 * score.length()), 12);
+            // Draw text
+            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
+                    - (3 * score.length() - 1), 11);
         }
 
         batcher.end();

@@ -1,10 +1,10 @@
 package com.stmbird.gameobjects;
 
 
-import java.util.Random;
-
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
+
+import java.util.Random;
 
 public class Pipe extends Scrollable {
 
@@ -17,6 +17,7 @@ public class Pipe extends Scrollable {
     public static final int SKULL_HEIGHT = 11;
     private float groundY;
 
+    private boolean isScored = false;
 
     public Pipe(float x, float y, int width, int height, float scrollSpeed,
                 float groundY) {
@@ -57,6 +58,7 @@ public class Pipe extends Scrollable {
         super.reset(newX);
         // Change the height to a random number
         height = r.nextInt(90) + 15;
+        isScored = false;
     }
 
     public Rectangle getSkullUp() {
@@ -83,5 +85,18 @@ public class Pipe extends Scrollable {
                     .overlaps(bird.getBoundingCircle(), skullDown));
         }
         return false;
+    }
+
+    public boolean isScored() {
+        return isScored;
+    }
+
+    public void setScored(boolean b) {
+        isScored = b;
+    }
+
+    public void onRestart(float x, float scrollSpeed) {
+        velocity.x = scrollSpeed;
+        reset(x);
     }
 }

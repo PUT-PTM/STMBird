@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class AssetLoader {
@@ -16,6 +17,7 @@ public class AssetLoader {
 
     public static TextureRegion skullUp, skullDown, bar;
 
+    public static BitmapFont font, shadow;
 
 
     public static void load() {
@@ -51,7 +53,10 @@ public class AssetLoader {
         bar.flip(false, true);
 
 
-
+        font = new BitmapFont(Gdx.files.internal("data/text.fnt"));
+        font.setScale(.25f, -.25f);
+        shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"));
+        shadow.setScale(.25f, -.25f);
 
     }
 
@@ -59,6 +64,7 @@ public class AssetLoader {
         // We must dispose of the texture when we are finished.
         texture.dispose();
 
-
+        font.dispose();
+        shadow.dispose();
     }
 }
