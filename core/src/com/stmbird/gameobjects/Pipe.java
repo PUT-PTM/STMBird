@@ -1,20 +1,24 @@
 package com.stmbird.gameobjects;
 
-
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
-
 import java.util.Random;
 
-public class Pipe extends Scrollable {
+/**
+ * Class that contains information about our Pipes, it's postions, width, height.
+ */
+
+public class Pipe extends Scrollable
+{
 
     private Random r;
 
-    private Rectangle skullUp, skullDown, barUp, barDown;
+    private Rectangle HeadUp, HeadDown, barUp, barDown;
 
     public static final int VERTICAL_GAP = 45;
-    public static final int SKULL_WIDTH = 24;
-    public static final int SKULL_HEIGHT = 11;
+    public static final int Head_WIDTH = 24;
+    public static final int Head_HEIGHT = 11;
+
     private float groundY;
 
     private boolean isScored = false;
@@ -24,8 +28,8 @@ public class Pipe extends Scrollable {
         super(x, y, width, height, scrollSpeed);
         // Initialize a Random object for Random number generation
         r = new Random();
-        skullUp = new Rectangle();
-        skullDown = new Rectangle();
+        HeadUp = new Rectangle();
+        HeadDown = new Rectangle();
         barUp = new Rectangle();
         barDown = new Rectangle();
 
@@ -45,10 +49,10 @@ public class Pipe extends Scrollable {
 
 
 
-        skullUp.set(position.x - (SKULL_WIDTH - width) / 2, position.y + height
-                - SKULL_HEIGHT, SKULL_WIDTH, SKULL_HEIGHT);
-        skullDown.set(position.x - (SKULL_WIDTH - width) / 2, barDown.y,
-                SKULL_WIDTH, SKULL_HEIGHT);
+        HeadUp.set(position.x - (Head_WIDTH - width) / 2, position.y + height
+                - Head_HEIGHT, Head_WIDTH, Head_HEIGHT);
+        HeadDown.set(position.x - (Head_WIDTH - width) / 2, barDown.y,
+                Head_WIDTH, Head_HEIGHT);
 
     }
 
@@ -57,16 +61,18 @@ public class Pipe extends Scrollable {
         // Call the reset method in the superclass -scrollable
         super.reset(newX);
         // Change the height to a random number
+        //height = r.nextInt(90) + 15;
         height = r.nextInt(90) + 15;
         isScored = false;
+
     }
 
-    public Rectangle getSkullUp() {
-        return skullUp;
+    public Rectangle getHeadUp() {
+        return HeadUp;
     }
 
-    public Rectangle getSkullDown() {
-        return skullDown;
+    public Rectangle getHeadDown() {
+        return HeadDown;
     }
 
     public Rectangle getBarUp() {
@@ -81,8 +87,8 @@ public class Pipe extends Scrollable {
         if (position.x < bird.getX() + bird.getWidth()) {
             return (Intersector.overlaps(bird.getBoundingCircle(), barUp)
                     || Intersector.overlaps(bird.getBoundingCircle(), barDown)
-                    || Intersector.overlaps(bird.getBoundingCircle(), skullUp) || Intersector
-                    .overlaps(bird.getBoundingCircle(), skullDown));
+                    || Intersector.overlaps(bird.getBoundingCircle(), HeadUp) || Intersector
+                    .overlaps(bird.getBoundingCircle(), HeadDown));
         }
         return false;
     }

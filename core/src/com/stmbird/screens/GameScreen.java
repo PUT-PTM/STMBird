@@ -7,7 +7,12 @@ import com.stmbird.gameworld.GameRenderer;
 import com.stmbird.gameworld.GameWorld;
 import com.stmbird.helpers.InputHandler;
 
-public class GameScreen implements Screen {
+/**
+ * Class that is responsible for our GameScreen, rendering, resuming, pausing etc.
+ */
+
+public class GameScreen implements Screen
+{
 
     private GameWorld world;
     private GameRenderer renderer;
@@ -28,13 +33,13 @@ public class GameScreen implements Screen {
         Gdx.input.setInputProcessor(new InputHandler(world));
     }
 
+
     @Override
     public void render(float delta) {
         runTime += delta;
         world.update(delta);
         renderer.render(runTime);
     }
-
 
     @Override
     public void resize(int width, int height) {

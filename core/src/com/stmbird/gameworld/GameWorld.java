@@ -5,9 +5,12 @@ import com.badlogic.gdx.math.Rectangle;
 import com.stmbird.gameobjects.Bird;
 import com.stmbird.gameobjects.ScrollHandler;
 
+/**
+ * Class that initialize our World, starting possition of our Game Objects.
+ */
 
-
-public class GameWorld {
+public class GameWorld
+{
 
     private Bird bird;
     private ScrollHandler scroller;
@@ -31,7 +34,6 @@ public class GameWorld {
         ground = new Rectangle(0, midPointY + 66, 136, 11);
 
     }
-
 
     public void updateRunning(float delta) {
 
@@ -57,7 +59,6 @@ public class GameWorld {
         }
 
     }
-
 
     public void update(float delta) {
 
@@ -114,4 +115,5 @@ public class GameWorld {
     public boolean isGameOver() {
         return currentState == GameState.GAMEOVER;
     }
+
 }

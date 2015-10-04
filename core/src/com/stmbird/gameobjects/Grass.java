@@ -1,8 +1,10 @@
 package com.stmbird.gameobjects;
 
-
-public class Grass extends Scrollable {
-
+/**
+ * Class that contains information about our Grass it's postion.
+ */
+public class Grass extends Scrollable
+{
 
     public Grass(float x, float y, int width, int height, float scrollSpeed) {
         super(x, y, width, height, scrollSpeed);

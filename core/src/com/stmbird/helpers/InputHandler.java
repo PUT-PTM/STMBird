@@ -4,11 +4,17 @@ import com.badlogic.gdx.InputProcessor;
 import com.stmbird.gameobjects.Bird;
 import com.stmbird.gameworld.GameWorld;
 
-public class InputHandler implements InputProcessor {
+/**
+ * Class that reacts to various inputs.
+ */
+
+public class InputHandler implements InputProcessor
+{
 
 
     private Bird myBird;
     private GameWorld myWorld;
+
 
     // Ask for a reference to the Bird when InputHandler is created.
     public InputHandler(GameWorld myWorld) {
@@ -19,6 +25,7 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+
         if (myWorld.isReady()) {
             myWorld.start();
         }
@@ -35,7 +42,20 @@ public class InputHandler implements InputProcessor {
 
     @Override
     public boolean keyDown(int keycode) {
-        return false;
+
+
+        if (myWorld.isReady()) {
+            myWorld.start();
+        }
+
+        myBird.onClick();
+
+        if (myWorld.isGameOver()) {
+            // Reset all variables, go to GameState.READ
+            myWorld.restart();
+        }
+
+        return true;
     }
 
     @Override

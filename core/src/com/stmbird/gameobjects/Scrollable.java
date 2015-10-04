@@ -2,8 +2,12 @@ package com.stmbird.gameobjects;
 
 import com.badlogic.gdx.math.Vector2;
 
-public class Scrollable {
+/**
+ * Class that contains information about shared propetites between Pipe and Grass objects.
+ */
 
+public class Scrollable
+{
 
     protected Vector2 position;
     protected Vector2 velocity;
@@ -33,7 +37,6 @@ public class Scrollable {
         position.x = newX;
         isScrolledLeft = false;
     }
-
 
     public boolean isScrolledLeft() {
         return isScrolledLeft;

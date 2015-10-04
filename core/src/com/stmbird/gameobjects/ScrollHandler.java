@@ -2,7 +2,11 @@ package com.stmbird.gameobjects;
 
 import com.stmbird.gameworld.GameWorld;
 
-public class ScrollHandler {
+/**
+ * Class which allow us to create, update and reset our Grass and Pipes objects.
+ */
+public class ScrollHandler
+{
 
     private Grass frontGrass, backGrass;
     private Pipe pipe1, pipe2, pipe3;
@@ -10,19 +14,6 @@ public class ScrollHandler {
     public static final int PIPE_GAP = 49;
     private GameWorld gameWorld;
 
-    /*
-    public ScrollHandler(float yPos) {
-        frontGrass = new Grass(0, yPos, 143, 11, SCROLL_SPEED);
-        backGrass = new Grass(frontGrass.getTailX(), yPos, 143, 11,
-                SCROLL_SPEED);
-
-        pipe1 = new Pipe(210, 0, 22, 60, SCROLL_SPEED, yPos);
-        pipe2 = new Pipe(pipe1.getTailX() + PIPE_GAP, 0, 22, 70, SCROLL_SPEED,
-                yPos);
-        pipe3 = new Pipe(pipe2.getTailX() + PIPE_GAP, 0, 22, 60, SCROLL_SPEED,
-                yPos);
-    }
-    */
 
     public ScrollHandler(GameWorld gameWorld, float yPos) {
         this.gameWorld = gameWorld;

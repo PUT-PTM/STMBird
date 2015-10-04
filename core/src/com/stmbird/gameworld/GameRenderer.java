@@ -13,8 +13,14 @@ import com.stmbird.gameobjects.Grass;
 import com.stmbird.gameobjects.Pipe;
 import com.stmbird.gameobjects.ScrollHandler;
 import com.stmbird.helpers.AssetLoader;
+import gnu.io.SerialPort;
 
-public class GameRenderer {
+/**
+ * Class that render our game objects.
+ */
+
+public class GameRenderer
+{
 
     private GameWorld myWorld;
     private OrthographicCamera cam;
@@ -24,6 +30,7 @@ public class GameRenderer {
 
     private int midPointY;
     private int gameHeight;
+    private int gameWidth;
 
     // Game Objects
     private Bird bird;
@@ -37,8 +44,13 @@ public class GameRenderer {
     private TextureRegion birdMid, birdDown, birdUp;
     private TextureRegion skullUp, skullDown, bar;
 
+    // Serial Port
+    SerialPort serialPort;
+
+
     public GameRenderer(GameWorld world, int gameHeight, int midPointY) {
         myWorld = world;
+
 
         this.gameHeight = gameHeight;
         this.midPointY = midPointY;
@@ -133,7 +145,7 @@ public class GameRenderer {
         shapeRenderer.begin(ShapeType.Filled);
 
         // Draw Background color
-        shapeRenderer.setColor(55 / 255.0f, 80 / 255.0f, 100 / 255.0f, 1);
+        shapeRenderer.setColor(113 / 255.0f, 197 / 255.0f, 207 / 255.0f, 1);
         shapeRenderer.rect(0, 0, 136, midPointY + 66);
 
         // Draw Grass
@@ -141,7 +153,8 @@ public class GameRenderer {
         shapeRenderer.rect(0, midPointY + 66, 136, 11);
 
         // Draw Dirt
-        shapeRenderer.setColor(147 / 255.0f, 80 / 255.0f, 27 / 255.0f, 1);
+        shapeRenderer.setColor(50 / 255.0f, 219 / 255.0f, 41 / 255.0f, 1);
+        //shapeRenderer.setColor(50f,219f,41f,1f);
         shapeRenderer.rect(0, midPointY + 77, 136, 52);
 
         shapeRenderer.end();
@@ -173,19 +186,20 @@ public class GameRenderer {
         }
 
         if (myWorld.isReady()) {
-            // Draw shadow first
-            AssetLoader.shadow.draw(batcher, "Start", (136 / 2)
-                    - (42), 76);
+
             // Draw text
-            AssetLoader.font.draw(batcher, "Start", (136 / 2)
-                    - (42 - 1), 75);
+
+            AssetLoader.font.draw(batcher, "Gotowy?", 30, 77);
+
+
         } else {
 
             if (myWorld.isGameOver()) {
-                AssetLoader.shadow.draw(batcher, "Koniec gry", 25, 56);
+
+
                 AssetLoader.font.draw(batcher, "Koniec gry", 24, 55);
 
-                AssetLoader.shadow.draw(batcher, "Od nowa?", 23, 76);
+
                 AssetLoader.font.draw(batcher, "Od nowa?", 24, 75);
 
 
@@ -194,15 +208,12 @@ public class GameRenderer {
 
             // Convert integer into String
             String score = myWorld.getScore() + "";
-
-            // Draw shadow first
-            AssetLoader.shadow.draw(batcher, "" + myWorld.getScore(), (136 / 2)
-                    - (3 * score.length()), 12);
             // Draw text
-            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (136 / 2)
-                    - (3 * score.length() - 1), 11);
-        }
 
+            AssetLoader.font.draw(batcher, "" + myWorld.getScore(), 60, 25);
+            /*AssetLoader.font.draw(batcher, "" + myWorld.getScore(), (midPointY / 2)
+                    - (3 * score.length() - 1), 10);*/
+        }
         batcher.end();
 
     }
