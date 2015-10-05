@@ -20,7 +20,7 @@ public class AssetLoader
     public static Animation birdAnimation;
     public static TextureRegion bird, birdDown, birdUp;
 
-    public static TextureRegion skullUp, skullDown, bar;
+    public static TextureRegion headUp, headDown, bar;
 
     public static BitmapFont font, shadow;
 
@@ -50,16 +50,16 @@ public class AssetLoader
         birdAnimation = new Animation(0.06f, birds);
 
 
-        skullUp = new TextureRegion(texture, 192, 0, 24, 14);
-        // Create by flipping existing skullUp
-        skullDown = new TextureRegion(skullUp);
-        skullDown.flip(false, true);
+        headUp = new TextureRegion(texture, 192, 0, 24, 14);
+        // Create by flipping existing headUp
+        headDown = new TextureRegion(headUp);
+        headDown.flip(false, true);
 
         bar = new TextureRegion(texture, 136, 16, 22, 3);
         bar.flip(false, true);
 
         font = new BitmapFont(Gdx.files.internal("data/text.fnt"), true);
-        //shadow = new BitmapFont(Gdx.files.internal("data/shadow.fnt"), true);
+
 
 
     }

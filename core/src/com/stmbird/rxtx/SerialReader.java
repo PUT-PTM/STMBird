@@ -19,7 +19,6 @@ public class SerialReader implements Runnable
     public void run() {
         byte[] buffer = new byte[1024];
         String READ;
-        String DIVIDE;
         int len = -1;
 
         try {
@@ -30,23 +29,10 @@ public class SerialReader implements Runnable
 
                 if(READ.length()>0)
                 {
-                    //DIVIDE = READ.substring(1,2);
-                    //if(DIVIDE.substring(0, 1).equals("a"))
-                    {
-                        System.out.println(READ);
 
-                        System.out.println("UP!");
+                    {
                         robot.keyPress(KeyEvent.VK_SPACE);
                         robot.keyRelease(KeyEvent.VK_SPACE);
-                        //try {
-                           // Thread.sleep(550);                 //1000 milliseconds is one second.
-                       // } catch(InterruptedException ex) {
-                           // Thread.currentThread().interrupt();
-                        //}
-
-                        //robot.mousePress(InputEvent.BUTTON1_MASK);
-                        //robot.mouseRelease(InputEvent.BUTTON1_MASK);
-
                     }
 
                 }
@@ -56,7 +42,4 @@ public class SerialReader implements Runnable
         }
     }
 
-    public void isConnected(){
-
-    }
 }

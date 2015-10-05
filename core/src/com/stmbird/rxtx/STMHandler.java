@@ -32,10 +32,12 @@ public class STMHandler
                 serialPort.setSerialPortParams(57600, SerialPort.DATABITS_8, SerialPort.STOPBITS_1, SerialPort.PARITY_NONE);
 
                 InputStream in = serialPort.getInputStream();
-               // OutputStream out = serialPort.getOutputStream();
+                //In our case we are not using SerialWriter
+              //OutputStream out = serialPort.getOutputStream();
 
                 (new Thread(new SerialReader(in))).start();
-               // (new Thread(new SerialWriter(out))).start();
+                //In our case we are not using SerialWriter
+              //(new Thread(new SerialWriter(out))).start();
 
             } else {
                 System.out.println("Error: Only serial ports are handled.");

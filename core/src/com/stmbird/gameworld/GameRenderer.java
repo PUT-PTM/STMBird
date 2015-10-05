@@ -42,7 +42,7 @@ public class GameRenderer
     private TextureRegion bg, grass;
     private Animation birdAnimation;
     private TextureRegion birdMid, birdDown, birdUp;
-    private TextureRegion skullUp, skullDown, bar;
+    private TextureRegion HeadUp, HeadDown, bar;
 
     // Serial Port
     SerialPort serialPort;
@@ -85,8 +85,8 @@ public class GameRenderer
         birdMid = AssetLoader.bird;
         birdDown = AssetLoader.birdDown;
         birdUp = AssetLoader.birdUp;
-        skullUp = AssetLoader.skullUp;
-        skullDown = AssetLoader.skullDown;
+        HeadUp = AssetLoader.headUp;
+        HeadDown = AssetLoader.headDown;
         bar = AssetLoader.bar;
     }
 
@@ -99,22 +99,22 @@ public class GameRenderer
                 backGrass.getWidth(), backGrass.getHeight());
     }
 
-    private void drawSkulls() {
+    private void drawHeads() {
 
-        // Draw the skulls
-        batcher.draw(skullUp, pipe1.getX() - 1,
+        // Draw the Heads
+        batcher.draw(HeadUp, pipe1.getX() - 1,
                 pipe1.getY() + pipe1.getHeight() - 14, 24, 14);
-        batcher.draw(skullDown, pipe1.getX() - 1,
+        batcher.draw(HeadDown, pipe1.getX() - 1,
                 pipe1.getY() + pipe1.getHeight() + 45, 24, 14);
 
-        batcher.draw(skullUp, pipe2.getX() - 1,
+        batcher.draw(HeadUp, pipe2.getX() - 1,
                 pipe2.getY() + pipe2.getHeight() - 14, 24, 14);
-        batcher.draw(skullDown, pipe2.getX() - 1,
+        batcher.draw(HeadDown, pipe2.getX() - 1,
                 pipe2.getY() + pipe2.getHeight() + 45, 24, 14);
 
-        batcher.draw(skullUp, pipe3.getX() - 1,
+        batcher.draw(HeadUp, pipe3.getX() - 1,
                 pipe3.getY() + pipe3.getHeight() - 14, 24, 14);
-        batcher.draw(skullDown, pipe3.getX() - 1,
+        batcher.draw(HeadDown, pipe3.getX() - 1,
                 pipe3.getY() + pipe3.getHeight() + 45, 24, 14);
     }
 
@@ -170,8 +170,8 @@ public class GameRenderer
         drawPipes();
         batcher.enableBlending();
 
-        // 3. Draw Skulls
-        drawSkulls();
+        // 3. Draw Heads
+        drawHeads();
 
         if (bird.shouldntFlap()) {
             batcher.draw(birdMid, bird.getX(), bird.getY(),
