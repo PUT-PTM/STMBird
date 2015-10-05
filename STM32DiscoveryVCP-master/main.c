@@ -602,6 +602,7 @@ int main(void)
 
 	while (1)
 	{
+		int i;
 
 		LIS302DL_Read(&przyspieszenie_x, LIS302DL_OUT_X_ADDR, 1);
 				    	if(przyspieszenie_x>127)
@@ -626,43 +627,6 @@ int main(void)
 				        }
 
 
-		/*
-		/* Blink the orange LED at 1Hz
-		if (500 == ticker)
-		{
-			GPIOD->BSRRH = GPIO_Pin_13;
-		}
-		else if (1000 == ticker)
-		{
-			ticker = 0;
-			GPIOD->BSRRL = GPIO_Pin_13;
-		}
-*/
-/*
-		// New code
-		 if ( ticker%2==0 )// sprawdzic
-		{
-			//GPIOD->BSRRH = GPIO_Pin_13;
-			//VCP_put_char(97);
-
-			if(przyspieszenie_y > 10)
-			{
-			VCP_put_char(97);
-			}
-		}
-
-		else if (1000 == ticker)
-		{
-			ticker = 0;
-			GPIOD->BSRRL = GPIO_Pin_13;
-
-			if (przyspieszenie_y > 10)
-			{
-			VCP_put_char(97);
-			}
-		}
-
-*/
 
 		int flag = 1;		// 1 - wysyla   0 - nie wysyla
 
@@ -675,64 +639,14 @@ int main(void)
 			flag = 0;				// ustawienie flagi powodujacej przerwanie przesylania
 
 		}
-		int i;
 		for(i= 0; i<200000; i++)
 		{};
 
 		if(przyspieszenie_y < 20)
 		{
-
-			flag = 1;				// ustawienie flagi na ponowne przesy³anie z uwzglêdnieniem histerezy
+			flag = 1;
 		}
 
-
-
-		/* If there's data on the virtual serial port:
-		 *  - Echo it back
-		 *  - Turn the green LED on for 10ms
-		 */
-
-/* testing value of accelerometion
-		if(przyspieszenie_y > 10)
-			{
-
-				VCP_put_char(97);
-			}
-		 //old code
-*/
-
-		//VCP_put_char(przyspieszenie_x);
-		//VCP_put_char(przyspieszenie_z);
-
-
-		/*
-		uint8_t theByte;
-
-		if (VCP_get_char(&theByte))
-		{
-			VCP_put_char(theByte);
-
-
-			GPIOD->BSRRL = GPIO_Pin_12;
-			downTicker = 10;
-		}
-		if (0 == downTicker)
-		{
-			GPIOD->BSRRH = GPIO_Pin_12;
-		}*/
-
-
-
-
-
-		//    	GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
-
-		//        Delay(0x44FFFF);
-
-
-
-		    }
-	// AKCELEROMETR !!!
 
 	return 0;
 }
