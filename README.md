@@ -3,3 +3,5 @@ This project is our own implementation of popular game "Flappy Bird" (http://en.
 Contributors:
 - Jędrzej Serwa
 - Adrian Borowiec
+
+Documentation available @ www.serwa.it/stm/
