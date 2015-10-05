@@ -21,3 +21,9 @@ Tools
 Documentation
 -----
 Available @ www.serwa.it/stm/
+
+Credits
+-----
+Project made for university course purposes on Poznań University of Technology.
+
+Supervisor - Michal Fularz.
